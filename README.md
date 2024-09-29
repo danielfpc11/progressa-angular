@@ -26,12 +26,19 @@
 
 ### Yarn Installation (optional)
 
-- If `yarn` package manager is preferred, you must install it through `npm`:
+1. If `yarn` package manager is preferred, you must install it through `npm`:
 
     ``` bash
     npm install -g yarn
     ```
-    
+
+### Angular Installation
+
+1. Use the command line interface (CLI) to install Angular:
+
+    ``` bash
+    npm install -g @angular/cli@18
+    ```
 
 ### Install Dependencies
 
