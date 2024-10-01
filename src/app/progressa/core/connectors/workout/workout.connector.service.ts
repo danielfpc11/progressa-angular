@@ -63,7 +63,7 @@ export class WorkoutConnector {
   deleteWorkout(id: number): void {
     this.service.deleteWorkout(id)
         .subscribe({
-          next: (workout: Workout) => {
+          next: () => {
             const currentList: Workout[] = this.workoutsSubject.value;
             const updatedList: Workout[] = currentList.filter((deleted) => deleted.id !== id);
             this.workoutsSubject.next(updatedList);
