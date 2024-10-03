@@ -1,2 +1,2 @@
-export * from './models/workout.model';
+export * from './models';
 export * from './constants';
