@@ -1,18 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-
-import { SetService } from './set.service';
+import { ExerciseSetService } from './exercise-set.service';
 
 // TODO Finish the test
 describe('SetService', () => {
-  let service: SetService;
+  let setService: ExerciseSetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SetService);
+    setService = TestBed.inject(ExerciseSetService);
   });
 
   it('should be created', () => {
-    expect(service)
+    expect(setService)
       .toBeTruthy();
   });
 });
