@@ -13,11 +13,11 @@ export class WorkoutConnector {
               protected errorHandler: ErrorHandlerService) {
   }
 
-  getWorkout(): Observable<Workout[]> {
+  getWorkouts(): Observable<Workout[]> {
     return this.workoutService
                .getWorkouts()
                .pipe(
-                 map((datalist: any[]): Workout[] => datalist.map((data: any): Workout => WorkoutAdapter.adapt(data))),
+                 map((datalist: any[]): Workout[] => datalist.map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data))),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
@@ -26,25 +26,29 @@ export class WorkoutConnector {
     return this.workoutService
                .getWorkoutById(id)
                .pipe(
-                 map((data: any): Workout => WorkoutAdapter.adapt(data)),
+                 map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
   createWorkout(workout: Workout): Observable<Workout> {
+    const data: Workout = WorkoutAdapter.adaptRequestBody(workout);
+
     return this.workoutService
-               .createWorkout(workout)
+               .createWorkout(data)
                .pipe(
-                 map((data: any): Workout => WorkoutAdapter.adapt(data)),
+                 map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
   updateWorkout(id: number, workout: Workout): Observable<Workout> {
+    const data = WorkoutAdapter.adaptRequestBody(workout);
+
     return this.workoutService
-               .updateWorkout(id, workout)
+               .updateWorkout(id, data)
                .pipe(
-                 map((data: any): Workout => WorkoutAdapter.adapt(data)),
+                 map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
