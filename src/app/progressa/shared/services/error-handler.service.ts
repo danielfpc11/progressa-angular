@@ -11,10 +11,4 @@ export class ErrorHandlerService {
 
     return throwError(() => new Error(error.message));
   }
-
-  // handleError(error: any): Observable<never> {
-  //   let errorStrategy!: ErrorStrategy = this.errorStrategies.find(errorStrategy => errorStrategy.isValid(error));
-  //   return errorStrategy.handleError(error);
-  // }
-
 }
