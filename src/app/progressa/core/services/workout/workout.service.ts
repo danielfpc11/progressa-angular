@@ -13,27 +13,27 @@ export class WorkoutService {
 
   getWorkouts(): Observable<Workout[]> {
     return this.http
-               .get<Workout[]>(`${ WORKOUT_URL }/all`, { observe: 'body' });
+               .get<Workout[]>(`${WORKOUT_URL}/all`, { observe: 'body' });
   }
 
   getWorkoutById(id: number): Observable<Workout> {
     return this.http
-               .get<Workout>(`${ WORKOUT_URL }/get/${ id }`, { observe: 'body' });
+               .get<Workout>(`${WORKOUT_URL}/get/${id}`, { observe: 'body' });
   }
 
   createWorkout(workout: Workout): Observable<Workout> {
     return this.http
-               .post<Workout>(`${ WORKOUT_URL }/new`, workout, { observe: 'body' });
+               .post<Workout>(`${WORKOUT_URL}/new`, workout, { observe: 'body' });
   }
 
   updateWorkout(id: number, workout: Workout): Observable<Workout> {
     return this.http
-               .put<Workout>(`${ WORKOUT_URL }/update/${ id }`, workout, { observe: 'body' });
+               .put<Workout>(`${WORKOUT_URL}/update/${id}`, workout, { observe: 'body' });
   }
 
   deleteWorkout(id: number): Observable<void> {
     return this.http
-               .delete<void>(`${ WORKOUT_URL }/delete/${ id }`, { observe: 'body' });
+               .delete<void>(`${WORKOUT_URL}/delete/${id}`, { observe: 'body' });
   }
 
 }
