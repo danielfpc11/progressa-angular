@@ -1,7 +1,6 @@
 import { Exercise, Workout } from '../../../shared';
 
 export class WorkoutAdapter {
-
   static adaptResponseBody(data: any): Workout {
     return {
       id: data.id,
