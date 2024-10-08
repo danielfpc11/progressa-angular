@@ -39,9 +39,8 @@ export class ExerciseTypeConnector {
     return this.exerciseSetService
                .createExerciseType(data)
                .pipe(
-                 map(
-                   (data: any): ExerciseType => ExerciseTypeAdapter.adaptResponseBody(data)
-                 )
+                 map((data: any): ExerciseType => ExerciseTypeAdapter.adaptResponseBody(data)),
+                 catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
