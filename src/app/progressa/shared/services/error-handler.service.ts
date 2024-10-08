@@ -8,7 +8,6 @@ export class ErrorHandlerService {
 
   handleError(error: Error): Observable<never> {
     console.error(`Error fetching data: ${ error.message }`);
-
     return throwError(() => new Error(error.message));
   }
 }

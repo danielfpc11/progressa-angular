@@ -13,27 +13,27 @@ export class ExerciseSetService {
 
   getExerciseSets(): Observable<ExerciseSet[]> {
     return this.http
-               .get<any>(`${ EXERCISE_SET_URL }/all`, { observe: 'body' });
+               .get<ExerciseSet[]>(`${EXERCISE_SET_URL}/all`, { observe: 'body' });
   }
 
   getExerciseSetById(id: number): Observable<ExerciseSet> {
     return this.http
-               .get<ExerciseSet>(`${ EXERCISE_SET_URL }/get/${ id }`, { observe: 'body' });
+               .get<ExerciseSet>(`${EXERCISE_SET_URL}/get/${id}`, { observe: 'body' });
   }
 
   createExerciseSet(exerciseSet: ExerciseSet): Observable<ExerciseSet> {
     return this.http
-               .post<ExerciseSet>(`${ EXERCISE_SET_URL }/new`, exerciseSet, { observe: 'body' });
+               .post<ExerciseSet>(`${EXERCISE_SET_URL}/new`, exerciseSet, { observe: 'body' });
   }
 
   updateExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<ExerciseSet> {
     return this.http
-               .put<ExerciseSet>(`${ EXERCISE_SET_URL }/update/${ id }`, exerciseSet, { observe: 'body' });
+               .put<ExerciseSet>(`${EXERCISE_SET_URL}/update/${id}`, exerciseSet, { observe: 'body' });
   }
 
   deleteExerciseSet(id: number): Observable<void> {
     return this.http
-               .delete<void>(`${ EXERCISE_SET_URL }/delete/${ id }`, { observe: 'body' });
+               .delete<void>(`${EXERCISE_SET_URL}/delete/${id}`, { observe: 'body' });
   }
 
 }

@@ -13,27 +13,27 @@ export class ExerciseTypeService {
 
   getExerciseTypes(): Observable<ExerciseType[]> {
     return this.http
-               .get<any>(`${ EXERCISE_TYPE_URL }/all`, { observe: 'body' });
+               .get<ExerciseType[]>(`${EXERCISE_TYPE_URL}/all`, { observe: 'body' });
   }
 
   getExerciseTypeById(id: number): Observable<ExerciseType> {
     return this.http
-               .get<ExerciseType>(`${ EXERCISE_TYPE_URL }/get/${ id }`, { observe: 'body' });
+               .get<ExerciseType>(`${EXERCISE_TYPE_URL}/get/${id}`, { observe: 'body' });
   }
 
   createExerciseType(exerciseType: ExerciseType): Observable<ExerciseType> {
     return this.http
-               .post<ExerciseType>(`${ EXERCISE_TYPE_URL }/new`, exerciseType, { observe: 'body' });
+               .post<ExerciseType>(`${EXERCISE_TYPE_URL}/new`, exerciseType, { observe: 'body' });
   }
 
   updateExerciseType(id: number, exerciseType: ExerciseType): Observable<ExerciseType> {
     return this.http
-               .put<ExerciseType>(`${ EXERCISE_TYPE_URL }/update/${ id }`, exerciseType, { observe: 'body' });
+               .put<ExerciseType>(`${EXERCISE_TYPE_URL}/update/${id}`, exerciseType, { observe: 'body' });
   }
 
   deleteExerciseType(id: number): Observable<void> {
     return this.http
-               .delete<void>(`${ EXERCISE_TYPE_URL }/delete/${ id }`, { observe: 'body' });
+               .delete<void>(`${EXERCISE_TYPE_URL}/delete/${id}`, { observe: 'body' });
   }
 
 }
