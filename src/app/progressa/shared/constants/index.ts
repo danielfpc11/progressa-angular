@@ -1,1 +1,1 @@
-export * from './progressa.api.constants';
+export * from './progressa-api-endpoints.constants';
