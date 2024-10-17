@@ -12,7 +12,7 @@ export class ExerciseSetAdapter {
     };
   }
 
-  static adaptRequestBody(exerciseSet: ExerciseSet) {
+  static adaptRequestBody(exerciseSet: ExerciseSet): any {
     return {
       id: exerciseSet.id,
       number: exerciseSet.number,
