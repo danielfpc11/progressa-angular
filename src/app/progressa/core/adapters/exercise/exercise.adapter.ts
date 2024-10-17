@@ -1,4 +1,5 @@
 import { Exercise, ExerciseSet } from '../../../shared';
+import { ExerciseSetAdapter } from '../exercise-set';
 
 export class ExerciseAdapter {
   static adaptResponseBody(data: any): Exercise {
@@ -17,14 +18,9 @@ export class ExerciseAdapter {
       workoutId: exercise.workoutId,
       exerciseTypeId: exercise.exerciseTypeId,
       exerciseTypeName: exercise.exerciseTypeName,
-      setDatas: exercise.sets?.map((exerciseSet: ExerciseSet) => ({
-        id: exerciseSet.id,
-        number: exerciseSet.number,
-        rir: exerciseSet.rir,
-        weight: exerciseSet.weight,
-        repetitions: exerciseSet.repetitions,
-        exerciseId: exerciseSet.exerciseId
-      }))
+      setDatas: exercise.sets?.map(
+        (exerciseSet: ExerciseSet) => ExerciseSetAdapter.adaptRequestBody(exerciseSet)
+      )
     };
   }
 }

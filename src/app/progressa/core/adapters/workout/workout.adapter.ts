@@ -1,4 +1,5 @@
 import { Exercise, Workout } from '../../../shared';
+import { ExerciseAdapter } from '../exercise';
 
 export class WorkoutAdapter {
   static adaptResponseBody(data: any): Workout {
@@ -13,13 +14,7 @@ export class WorkoutAdapter {
     return {
       id: workout.id,
       date: workout.date,
-      exerciseDatas: workout.exercises?.map((exercise: Exercise) => ({
-        id: exercise.id,
-        exerciseTypeId: exercise.exerciseTypeId,
-        exerciseTypeName: exercise.exerciseTypeName,
-        setDatas: exercise.sets,
-        workoutId: exercise.workoutId
-      }))
+      exerciseDatas: workout.exercises?.map((exercise: Exercise) => ExerciseAdapter.adaptRequestBody(exercise))
     };
   }
 }
