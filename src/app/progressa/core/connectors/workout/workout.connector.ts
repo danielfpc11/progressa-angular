@@ -52,7 +52,11 @@ export class WorkoutConnector {
   }
 
   deleteWorkout(id: number): Observable<void> {
-    return this.workoutService.deleteWorkout(id);
+    return this.workoutService
+               .deleteWorkout(id)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
   }
 
 }
