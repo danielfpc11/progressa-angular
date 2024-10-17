@@ -21,14 +21,14 @@ export class ExerciseTypeService {
                .get<ExerciseType>(`${EXERCISE_TYPE_URL}/get/${id}`, { observe: 'body' });
   }
 
-  createExerciseType(exerciseType: ExerciseType): Observable<ExerciseType> {
+  createExerciseType(exerciseType: ExerciseType): Observable<void> {
     return this.http
-               .post<ExerciseType>(`${EXERCISE_TYPE_URL}/new`, exerciseType, { observe: 'body' });
+               .post<void>(`${EXERCISE_TYPE_URL}/new`, exerciseType, { observe: 'body' });
   }
 
-  updateExerciseType(id: number, exerciseType: ExerciseType): Observable<ExerciseType> {
+  updateExerciseType(id: number, exerciseType: ExerciseType): Observable<void> {
     return this.http
-               .put<ExerciseType>(`${EXERCISE_TYPE_URL}/update/${id}`, exerciseType, { observe: 'body' });
+               .put<void>(`${EXERCISE_TYPE_URL}/update/${id}`, exerciseType, { observe: 'body' });
   }
 
   deleteExerciseType(id: number): Observable<void> {

@@ -32,29 +32,31 @@ export class ExerciseConnector {
                );
   }
 
-  createExercise(exercise: Exercise): Observable<Exercise> {
+  createExercise(exercise: Exercise): Observable<void> {
     const data: Exercise = ExerciseAdapter.adaptRequestBody(exercise);
 
     return this.exerciseService
                .createExercise(data)
                .pipe(
-                 map((data: any): Exercise => ExerciseAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
-  updateExercise(id: number, exercise: Exercise): Observable<Exercise> {
+  updateExercise(id: number, exercise: Exercise): Observable<void> {
     const data: Exercise = ExerciseAdapter.adaptRequestBody(exercise);
 
     return this.exerciseService
                .updateExercise(id, data)
                .pipe(
-                 map((data: any): Exercise => ExerciseAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
   deleteExercise(id: number): Observable<void> {
-    return this.exerciseService.deleteExercise(id);
+    return this.exerciseService
+               .deleteExercise(id)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
   }
 }

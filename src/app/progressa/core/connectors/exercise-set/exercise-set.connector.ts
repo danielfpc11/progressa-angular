@@ -2,7 +2,7 @@ import { ExerciseSetService } from '../../services';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable } from 'rxjs';
 import { ErrorHandlerService, ExerciseSet } from '../../../shared';
-import { ExerciseAdapter, ExerciseSetAdapter } from '../../adapters';
+import { ExerciseSetAdapter } from '../../adapters';
 
 @Injectable({
   providedIn: 'root'
@@ -33,29 +33,31 @@ export class ExerciseSetConnector {
                );
   }
 
-  createExerciseSet(exerciseSet: ExerciseSet): Observable<ExerciseSet> {
+  createExerciseSet(exerciseSet: ExerciseSet): Observable<void> {
     const data: ExerciseSet = ExerciseSetAdapter.adaptRequestBody(exerciseSet);
 
     return this.exerciseSetService
                .createExerciseSet(data)
                .pipe(
-                 map((data: any): ExerciseSet => ExerciseSetAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
-  updateExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<ExerciseSet> {
-    const data: ExerciseSet = ExerciseAdapter.adaptRequestBody(exerciseSet);
+  updateExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<void> {
+    const data: ExerciseSet = ExerciseSetAdapter.adaptRequestBody(exerciseSet);
 
     return this.exerciseSetService
                .updateExerciseSet(id, data)
                .pipe(
-                 map((data: any): ExerciseSet => ExerciseSetAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
   deleteExerciseSet(id: number): Observable<void> {
-    return this.exerciseSetService.deleteExerciseSet(id);
+    return this.exerciseSetService
+               .deleteExerciseSet(id)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
   }
 }

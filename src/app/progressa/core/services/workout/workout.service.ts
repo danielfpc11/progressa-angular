@@ -21,14 +21,14 @@ export class WorkoutService {
                .get<Workout>(`${WORKOUT_URL}/get/${id}`, { observe: 'body' });
   }
 
-  createWorkout(workout: Workout): Observable<Workout> {
+  createWorkout(workout: Workout): Observable<void> {
     return this.http
-               .post<Workout>(`${WORKOUT_URL}/new`, workout, { observe: 'body' });
+               .post<void>(`${WORKOUT_URL}/new`, workout, { observe: 'body' });
   }
 
-  updateWorkout(id: number, workout: Workout): Observable<Workout> {
+  updateWorkout(id: number, workout: Workout): Observable<void> {
     return this.http
-               .put<Workout>(`${WORKOUT_URL}/update/${id}`, workout, { observe: 'body' });
+               .put<void>(`${WORKOUT_URL}/update/${id}`, workout, { observe: 'body' });
   }
 
   deleteWorkout(id: number): Observable<void> {

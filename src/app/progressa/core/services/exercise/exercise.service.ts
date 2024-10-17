@@ -21,14 +21,14 @@ export class ExerciseService {
                .get<Exercise>(`${EXERCISE_URL}/get/${id}`, { observe: 'body' });
   }
 
-  createExercise(exercise: Exercise): Observable<Exercise> {
+  createExercise(exercise: Exercise): Observable<void> {
     return this.http
-               .post<Exercise>(`${EXERCISE_URL}/new`, exercise, { observe: 'body' });
+               .post<void>(`${EXERCISE_URL}/new`, exercise, { observe: 'body' });
   }
 
-  updateExercise(id: number, exercise: Exercise): Observable<Exercise> {
+  updateExercise(id: number, exercise: Exercise): Observable<void> {
     return this.http
-               .put<Exercise>(`${EXERCISE_URL}/update/${id}`, exercise, { observe: 'body' });
+               .put<void>(`${EXERCISE_URL}/update/${id}`, exercise, { observe: 'body' });
   }
 
   deleteExercise(id: number): Observable<void> {

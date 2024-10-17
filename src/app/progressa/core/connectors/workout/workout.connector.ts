@@ -31,24 +31,22 @@ export class WorkoutConnector {
                );
   }
 
-  createWorkout(workout: Workout): Observable<Workout> {
+  createWorkout(workout: Workout): Observable<void> {
     const data: Workout = WorkoutAdapter.adaptRequestBody(workout);
 
     return this.workoutService
                .createWorkout(data)
                .pipe(
-                 map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
-  updateWorkout(id: number, workout: Workout): Observable<Workout> {
+  updateWorkout(id: number, workout: Workout): Observable<void> {
     const data = WorkoutAdapter.adaptRequestBody(workout);
 
     return this.workoutService
                .updateWorkout(id, data)
                .pipe(
-                 map((data: any): Workout => WorkoutAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }

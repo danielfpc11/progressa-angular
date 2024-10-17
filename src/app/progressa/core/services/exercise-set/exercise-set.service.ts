@@ -21,14 +21,14 @@ export class ExerciseSetService {
                .get<ExerciseSet>(`${EXERCISE_SET_URL}/get/${id}`, { observe: 'body' });
   }
 
-  createExerciseSet(exerciseSet: ExerciseSet): Observable<ExerciseSet> {
+  createExerciseSet(exerciseSet: ExerciseSet): Observable<void> {
     return this.http
-               .post<ExerciseSet>(`${EXERCISE_SET_URL}/new`, exerciseSet, { observe: 'body' });
+               .post<void>(`${EXERCISE_SET_URL}/new`, exerciseSet, { observe: 'body' });
   }
 
-  updateExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<ExerciseSet> {
+  updateExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<void> {
     return this.http
-               .put<ExerciseSet>(`${EXERCISE_SET_URL}/update/${id}`, exerciseSet, { observe: 'body' });
+               .put<void>(`${EXERCISE_SET_URL}/update/${id}`, exerciseSet, { observe: 'body' });
   }
 
   deleteExerciseSet(id: number): Observable<void> {

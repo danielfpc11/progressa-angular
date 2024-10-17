@@ -33,30 +33,32 @@ export class ExerciseTypeConnector {
                );
   }
 
-  createExerciseType(exerciseType: ExerciseType): Observable<ExerciseType> {
+  createExerciseType(exerciseType: ExerciseType): Observable<void> {
     const data: ExerciseType = ExerciseTypeAdapter.adaptRequestBody(exerciseType);
 
     return this.exerciseSetService
                .createExerciseType(data)
                .pipe(
-                 map((data: any): ExerciseType => ExerciseTypeAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
-  updateExerciseType(id: number, exerciseType: ExerciseType): Observable<ExerciseType> {
+  updateExerciseType(id: number, exerciseType: ExerciseType): Observable<void> {
     const data: ExerciseType = ExerciseTypeAdapter.adaptRequestBody(exerciseType);
 
     return this.exerciseSetService
                .updateExerciseType(id, data)
                .pipe(
-                 map((data: any): ExerciseType => ExerciseTypeAdapter.adaptResponseBody(data)),
                  catchError((error: Error) => this.errorHandler.handleError(error))
                );
   }
 
   deleteExerciseType(id: number): Observable<void> {
-    return this.exerciseSetService.deleteExerciseType(id);
+    return this.exerciseSetService
+               .deleteExerciseType(id)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
   }
 
 }
