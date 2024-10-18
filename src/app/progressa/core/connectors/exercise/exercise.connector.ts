@@ -52,6 +52,16 @@ export class ExerciseConnector {
                );
   }
 
+  patchExercise(id: number, exercise: Exercise): Observable<void> {
+    const data: Exercise = ExerciseAdapter.adaptRequestBody(exercise);
+
+    return this.exerciseService
+               .patchExercise(id, data)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
+  }
+
   deleteExercise(id: number): Observable<void> {
     return this.exerciseService
                .deleteExercise(id)

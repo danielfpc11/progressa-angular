@@ -31,6 +31,11 @@ export class ExerciseService {
                .put<void>(`${EXERCISE_URL}/update/${id}`, exercise, { observe: 'body' });
   }
 
+  patchExercise(id: number, exercise: Exercise): Observable<void> {
+    return this.http
+               .patch<void>(`${EXERCISE_URL}/patch/${id}`, exercise, { observe: 'body' });
+  }
+
   deleteExercise(id: number): Observable<void> {
     return this.http
                .delete<void>(`${EXERCISE_URL}/delete/${id}`, { observe: 'body' });
