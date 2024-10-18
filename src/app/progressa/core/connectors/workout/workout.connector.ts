@@ -51,6 +51,16 @@ export class WorkoutConnector {
                );
   }
 
+  patchWorkout(id: number, workout: Workout): Observable<void> {
+    const data = WorkoutAdapter.adaptRequestBody(workout);
+
+    return this.workoutService
+               .patchWorkout(id, data)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
+  }
+
   deleteWorkout(id: number): Observable<void> {
     return this.workoutService
                .deleteWorkout(id)
