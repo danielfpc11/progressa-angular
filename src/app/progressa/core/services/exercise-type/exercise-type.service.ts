@@ -31,6 +31,11 @@ export class ExerciseTypeService {
                .put<void>(`${EXERCISE_TYPE_URL}/update/${id}`, exerciseType, { observe: 'body' });
   }
 
+  patchExerciseType(id: number, exerciseType: ExerciseType): Observable<void> {
+    return this.http
+               .patch<void>(`${EXERCISE_TYPE_URL}/patch/${id}`, exerciseType, { observe: 'body' });
+  }
+
   deleteExerciseType(id: number): Observable<void> {
     return this.http
                .delete<void>(`${EXERCISE_TYPE_URL}/delete/${id}`, { observe: 'body' });
