@@ -53,6 +53,16 @@ export class ExerciseSetConnector {
                );
   }
 
+  patchExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<void> {
+    const data: ExerciseSet = ExerciseSetAdapter.adaptRequestBody(exerciseSet);
+
+    return this.exerciseSetService
+               .patchExerciseSet(id, data)
+               .pipe(
+                 catchError((error: Error) => this.errorHandler.handleError(error))
+               );
+  }
+
   deleteExerciseSet(id: number): Observable<void> {
     return this.exerciseSetService
                .deleteExerciseSet(id)
