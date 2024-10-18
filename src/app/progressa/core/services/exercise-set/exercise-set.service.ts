@@ -33,7 +33,7 @@ export class ExerciseSetService {
 
   patchExerciseSet(id: number, exerciseSet: ExerciseSet): Observable<void> {
     return this.http
-               .put<void>(`${EXERCISE_SET_URL}/patch/${id}`, exerciseSet, { observe: 'body' });
+               .patch<void>(`${EXERCISE_SET_URL}/patch/${id}`, exerciseSet, { observe: 'body' });
   }
 
   deleteExerciseSet(id: number): Observable<void> {
